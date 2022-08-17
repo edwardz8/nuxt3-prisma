@@ -1,6 +1,6 @@
 import { sendError } from "h3"
 import { getRefreshTokenByToken } from "../../db/refreshTokens.js"
-import { decodeRefreshToken, generateTokens } from "../../utils/jwt.js"
+import { decodeRefreshToken, generateTokens } from "~~/server/utils/jwt.js"
 import { getUserById } from "../../db/users.js"
 
 export default defineEventHandler(async (event) => {
