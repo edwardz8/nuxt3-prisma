@@ -1,11 +1,14 @@
 <template>
     <div>
-        <main title="Home" :loading="loading">
-            This is the index page.
-        </main>
+        <MainSection title="Home" :loading="loading">
+            {{ user }}
+        </MainSection>
     </div>
 </template>
 
 <script setup>
 const loading = ref(false)
+
+const { useAuthUser } = useAuth()
+const user = useAuthUser()
 </script>
