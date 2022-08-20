@@ -27,6 +27,7 @@ const props = defineProps({
     deafult: false,
   },
 });
+
 const paddingClasses = computed(() => {
   switch (props.size) {
     case "sm":
@@ -37,6 +38,7 @@ const paddingClasses = computed(() => {
       return "px-3 py-3";
   }
 });
+
 const textFontSize = computed(() => {
   switch (props.size) {
     case "lg":
@@ -45,15 +47,18 @@ const textFontSize = computed(() => {
       return "text-sm";
   }
 });
+
 const defaultWidth = computed(() => {
   switch (props.size) {
     default:
       return "w-min";
   }
 });
+
 const classes = computed(
   () => `${paddingClasses.value} ${props.liquid ? "w-full" : defaultWidth.value}`
 );
+
 function handleClick(event) {
   emits("onClick", event);
 }

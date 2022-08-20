@@ -1,5 +1,6 @@
 <template>
   <TransitionRoot appear :show="props.isOpen" as="template">
+
     <Dialog as="div" @close="closeModal" class="relative z-10">
       <TransitionChild
         as="template"
@@ -14,6 +15,7 @@
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
+
         <div class="flex items-center justify-center min-h-full p-4 text-center">
           <TransitionChild
             as="template"
@@ -31,20 +33,25 @@
             </DialogPanel>
           </TransitionChild>
         </div>
+        
       </div>
     </Dialog>
+
   </TransitionRoot>
 </template>
 
 <script setup>
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from "@headlessui/vue";
+
 const emits = defineEmits(["onClose"]);
+
 const props = defineProps({
   isOpen: {
     type: Boolean,
     required: true,
   },
 });
+
 function closeModal() {
   emits("onClose");
 }

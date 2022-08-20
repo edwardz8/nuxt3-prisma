@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen flex flex-col ml-2">
+    <div class="ml-2">
         <!-- <div class="p-2 my-2 w-min rounded-full bg-blue-900 rounded-full" :class="defaultTransition">
             <nuxt-link to="/">
                 <div class="w-8 h-8">
@@ -18,23 +18,29 @@
                 </template>
             </sidebar-left-tab>
             <!-- second sidebar item -->
-            <sidebar-left-tab active>
+            <!-- <sidebar-left-tab active>
                 <template v-slot:icon>
                     <UserIcon />
                 </template>
                 <template v-slot:name>
                     Profile
                 </template>
-            </sidebar-left-tab>
+            </sidebar-left-tab> -->
             <!-- third sidebar item -->
-            <sidebar-left-tab active>
+            <!-- <sidebar-left-tab active>
                 <template v-slot:icon>
                     <BookmarkIcon />
                 </template>
                 <template v-slot:name>
                     Favorites
                 </template>
-            </sidebar-left-tab>
+            </sidebar-left-tab> -->
+
+            <div class="block xl:hidden">
+                <ui-button>
+                    <div class="w-6 h-6 font-bold"><PencilIcon /></div>
+                </ui-button>
+            </div>
         </div>
 
     </div>
@@ -42,7 +48,7 @@
 
 <script setup>
 import { HomeIcon } from "@heroicons/vue/solid"
-import { UserIcon, BookmarkIcon } from '@heroicons/vue/outline'
+import { UserIcon, BookmarkIcon, PencilIcon } from '@heroicons/vue/outline'
 const { defaultTransition } = useTailwindConfig()
 
 

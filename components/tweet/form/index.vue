@@ -4,18 +4,24 @@
       <ui-spinner />
     </div>
 
+    <div v-if="props.user">
+    <tweet-item :tweet="props.replyTo" v-if="props.replyTo && props.showReply" hideActions />
     <tweet-form-input
       :user="props.user"
-      :placeholder="props?.placeholder"
+      placeholder="Share your betting ideas..."
       @onSubmit="handleFormSubmit"
     />
+    </div>
+
   </div>
 </template>
 
 <script setup>
-const { postTweet } = useTweets();
-const loading = ref(false);
 const emits = defineEmits(["onSuccess"]);
+
+const loading = ref(false);
+
+const { postTweet } = useTweets();
 
 const props = defineProps({
   user: {

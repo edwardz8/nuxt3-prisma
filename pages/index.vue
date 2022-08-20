@@ -1,14 +1,19 @@
 <template>
   <div>
+
     <MainSection title="Home" :loading="loading">
       <Head>
-        <Title>Home / Twitter</Title>
+        <Title>Home</Title>
       </Head>
+
       <!-- {{ user }} -->
       <div class="border-b" :class="twitterBorderColor">
         <tweet-form :user="user" @on-success="handleFormSuccess" />
       </div>
+
+      <tweet-list-feed :tweets="homeTweets" />
     </MainSection>
+
   </div>
 </template>
 
@@ -16,8 +21,11 @@
 const { twitterBorderColor } = useTailwindConfig();
 
 const { getTweets } = useTweets();
+
 const loading = ref(false);
+
 const homeTweets = ref([]);
+
 const { useAuthUser } = useAuth();
 const user = useAuthUser();
 

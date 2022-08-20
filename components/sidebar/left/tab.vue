@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link to="#"
+    <nuxt-link to="/"
         class="flex items-center p-3 text-black rounded-full w-min bg-gray-200"
         :class="defaultTransition">
 
@@ -7,7 +7,7 @@
             <slot name="icon"></slot>
         </div>
 
-        <div class="ml-2 mt-1 px-2 text-lg xl:block hidden" :class="textClasses">
+        <div class="ml-2 mt-1 px-2 text-lg hidden" :class="textClasses">
             <slot name="name"></slot>
         </div>
 
