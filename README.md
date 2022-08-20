@@ -1,16 +1,16 @@
 # Nuxt 3 Minimal Starter
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+### task list
+- add likes 
+- clear input on reply input
+- add logout functionality 
+- do not show replies on home posts 
 
-## Setup
+- build and deploy
 
-Make sure to install the dependencies:
+## Setup (node or nvm version 18)
 
-```bash
-# yarn
-yarn install
-
-# npm
+# install dependencies
 npm install
 
 # pnpm

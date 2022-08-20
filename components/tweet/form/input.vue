@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-xl mx-auto my-2 mb-12 bg-gray-200 rounded-md py-2 px-2">
     <div class="flex items-center flex-shrink-0 p-4 pb-0">
       <div class="flex w-12 items-top">
         <img
@@ -33,6 +33,7 @@
         ref="imageInput"
         hidden
         accept="image/png, image/gif, image/jpeg"
+
         @change="handleImageChange"
       />
     </div>

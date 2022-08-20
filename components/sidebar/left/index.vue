@@ -17,30 +17,37 @@
                     Home
                 </template>
             </sidebar-left-tab>
-            <!-- second sidebar item -->
-            <!-- <sidebar-left-tab active>
-                <template v-slot:icon>
-                    <UserIcon />
-                </template>
-                <template v-slot:name>
-                    Profile
-                </template>
-            </sidebar-left-tab> -->
-            <!-- third sidebar item -->
-            <!-- <sidebar-left-tab active>
-                <template v-slot:icon>
-                    <BookmarkIcon />
-                </template>
-                <template v-slot:name>
-                    Favorites
-                </template>
-            </sidebar-left-tab> -->
 
-            <div class="block xl:hidden">
-                <ui-button>
+            <div class="block">
+                <ui-button @on-click="emits('onTweet')">
                     <div class="w-6 h-6 font-bold"><PencilIcon /></div>
                 </ui-button>
             </div>
+
+        </div>
+
+        <div class="flex flex-row items-center justify-center px-2 py-2 mx-auto mt-auto mb-5 rounded-full cursor-pointer w-14 xl:w-full hover:bg-gray-100 dark:hover:bg-dim-800"
+            :class="defaultTransition" @click="emits('onLogout')">
+
+            <div class="flex flex-row">
+                <img :src="props.user.profileImage" class="w-10 h-10 rounded-full">
+                <div class="flex-col hidden ml-2 xl:block">
+                    <h1 class="text-sm font-bold text-gray-800 dark:text-white">
+                        {{ user.name }}
+                    </h1>
+                    <p class="text-sm text-gray-400">
+                        {{ user.handle }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- ICON -->
+            <div class="hidden ml-auto xl:block">
+                <div class="w-6 h-6">
+                    <ChevronDownIcon />
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -48,8 +55,15 @@
 
 <script setup>
 import { HomeIcon } from "@heroicons/vue/solid"
-import { UserIcon, BookmarkIcon, PencilIcon } from '@heroicons/vue/outline'
+import { UserIcon, PencilIcon, ChevronDownIcon } from '@heroicons/vue/outline'
 const { defaultTransition } = useTailwindConfig()
 
+const emits = defineEmits(['onTweet', 'onLogout'])
 
+const props = defineProps({
+    user: {
+        type: Object,
+        required: true
+    }
+})
 </script>

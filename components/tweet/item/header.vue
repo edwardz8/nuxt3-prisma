@@ -1,13 +1,13 @@
 <template>
-    <div class="flex p-4">
+    <div class="flex p-2 justify-center">
         <div>
-            <img class="w-10 h-10 rounded-full" :src="author.profileImage" alt="">
+            <!-- <img class="w-10 h-10 rounded-full" :src="author.profileImage" alt=""> -->
         </div>
 
         <div class="ml-3">
-            <span class="font-medium text-gray-800 dark:text-white">{{ author.name }}</span>
+           <!--  <span class="font-medium text-gray-800 dark:text-white">{{ author.name }}</span> -->
 
-            <span class="ml-3 text-sm font-medium text-gray-400">
+            <span class="ml-2 text-sm font-medium text-gray-700">
                 <nuxt-link to="#">
                     {{ author.handle }}
                 </nuxt-link>
@@ -15,7 +15,7 @@
             </span>
 
             <p v-if="props.tweet.replyTo" class="text-sm">
-                <span class="text-gray-500">
+                <span class="text-gray-800 ml-2">
                     Replying to
                 </span>
 

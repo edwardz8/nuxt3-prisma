@@ -1,7 +1,7 @@
 <template>
-    <div @click.stop.prevent="emits('onClick')" class="flex items-center text-gray-400 cursor-pointer group">
+    <div @click.stop.prevent="emits('onClick')" class="flex items-center text-gray-800 cursor-pointer group">
 
-        <div :class="`p-2 rounded-full group-hover:bg-${props.color}-100 group-hover:text-${props.color}-400 dark:group-hover:bg-opacity-20 ${defaultTransition}`">
+        <div :class="`p-2 rounded-full bg-${props.color}-800 group-hover:text-${props.color}-600 ${defaultTransition}`">
             <slot name="icon" :classes="`w-${props.size} h-${props.size}`" />
         </div>
 

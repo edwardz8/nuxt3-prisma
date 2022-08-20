@@ -53,15 +53,17 @@ function handleUserLogout() {
       <loading v-if="isAuthLoading" />
 
       <div v-else-if="user" class="min-h-full">
-        <div class="grid grid-cols-12 mx-auto">
-          <!-- left sidebar -->
-          <div class="md:block xs-col-span-1 xl:col-span-2">
+          <!-- left sidebar / now top navigation -->
+          <div>
             <div class="sticky top-0">
-              <sidebar-left :user="user" @on-tweet="handleOpenTweetModal" @on-logout="handleUserLogout" />
+              <navigation :user="user" @on-tweet="handleOpenTweetModal" @on-logout="handleUserLogout" />
             </div>
           </div>
+
+        <!-- post grid -->
+        <div class="grid grid-cols-12 mx-auto">
           <!-- main content -->
-          <main class="col-span-12 bg-gray-600 md:col-span-10 xl:col-span-8">
+          <main class="col-span-12 justify-center">
             <router-view />
           </main>
           <!-- right sidebar -->

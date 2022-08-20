@@ -10,7 +10,7 @@
       <input
         :value="props.modelValue"
         @input="(event) => emits('update:modelValue', event.target.value)"
-        class="block w-full px-4 border-gray-300 rounded-full shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+        class="block w-full px-4 rounded-full shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
         :type="props.type"
         :placeholder="props.placeholder"
       />

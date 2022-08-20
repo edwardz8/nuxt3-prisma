@@ -8,7 +8,7 @@
     <tweet-item :tweet="props.replyTo" v-if="props.replyTo && props.showReply" hideActions />
     <tweet-form-input
       :user="props.user"
-      placeholder="Share your betting ideas..."
+      placeholder="Add an image or gif and share your bet."
       @onSubmit="handleFormSubmit"
     />
     </div>

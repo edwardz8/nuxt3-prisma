@@ -1,13 +1,13 @@
 <template>
   <div>
 
-    <MainSection title="Home" :loading="loading">
+    <!-- <MainSection title="Home" :loading="loading"> -->
+    <MainSection :loading="loading">
       <Head>
         <Title>Home</Title>
       </Head>
 
-      <!-- {{ user }} -->
-      <div class="border-b" :class="twitterBorderColor">
+      <div :class="twitterBorderColor">
         <tweet-form :user="user" @on-success="handleFormSuccess" />
       </div>
 
@@ -43,7 +43,7 @@ onBeforeMount(async () => {
 
 function handleFormSuccess(tweet) {
   navigateTo({
-    path: `/status/${tweet.id}`,
+    path: '/',
   });
 }
 </script>

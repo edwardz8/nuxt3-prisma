@@ -3,10 +3,12 @@
         <MainSection title="post" :loading="loading">
 
             <head>
-                <Title></Title>
+                <Title>Post</Title>
             </head>
 
+            <div v-if="tweet">
             <tweet-details :user="user" :tweet="tweet" />
+            </div>
 
         </MainSection>
     </div>
@@ -29,8 +31,11 @@ function getTweetIdFromRoute() {
 async function getTweet() {
     loading.value = true
     try {
-        const response = await getTweetById(getTweetIdFromRoute())
-        tweet.value = response.tweet
+        let tweetId = getTweetIdFromRoute()
+        if (tweetId) {
+            const response = await getTweetById(tweetId)
+            tweet.value = response.tweet 
+        }
     } catch (error) {
         console.log(error);
     } finally {
