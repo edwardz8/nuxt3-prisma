@@ -7,9 +7,9 @@
                 {{ props.tweet.text }}
             </p>
 
-            <div v-for="image in tweet?.mediaFiles" :key="image.id" class="flex justify-center my-3 mr-2 rounded-2xl"
+            <div v-for="image in tweet?.mediaFiles" :key="image.id" class="flex justify-center my-3 mr-2 rounded-2xl pt-2"
                 :class="twitterBorderColor">
-                <img :src="image.url" class="w-full max-w-sm rounded-2xl post-image" />
+                <img :src="image.url" class="w-full max-w-sm rounded-2xl" />
             </div>
 
             <div class="mt-2" v-if="!props.hideActions">
@@ -47,9 +47,3 @@ function handleCommentClick() {
     emitter.$emit('replyTweet', props.tweet)
 }
 </script>
-
-<style>
-.post-image {
-    max-width: 350px;
-}
-</style>

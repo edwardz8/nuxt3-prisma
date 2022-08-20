@@ -43,7 +43,7 @@ onBeforeMount(async () => {
 
 function handleFormSuccess(tweet) {
   navigateTo({
-    path: `/status/${tweet.id}`,
+    path: '/',
   });
 }
 </script>

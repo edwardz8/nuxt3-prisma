@@ -1,12 +1,11 @@
 # Nuxt 3 Minimal Starter
 
 ### task list
-- add likes 
-- clear input on reply input
+- add likes to posts
 - add logout functionality 
 - do not show replies on home posts 
 
-- build and deploy
+- registration broken on deploy 
 
 ## Setup (node or nvm version 18)
 

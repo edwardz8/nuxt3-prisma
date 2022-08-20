@@ -91,6 +91,7 @@ function handleFormSubmit() {
     text: text.value,
     mediaFiles: [selectedFile.value],
   });
+  text.value = ''
   /* alert(JSON.stringify({
     text: text.value 
   })) */

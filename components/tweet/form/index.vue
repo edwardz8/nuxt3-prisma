@@ -4,7 +4,7 @@
       <ui-spinner />
     </div>
 
-    <div v-if="props.user">
+    <div>
     <tweet-item :tweet="props.replyTo" v-if="props.replyTo && props.showReply" hideActions />
     <tweet-form-input
       :user="props.user"
@@ -55,6 +55,7 @@ async function handleFormSubmit(data) {
     console.log(error);
   } finally {
     loading.value = false;
+    response = null
   }
 }
 </script>

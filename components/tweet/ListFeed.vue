@@ -5,7 +5,7 @@
                 No posts
             </p>
         </div> -->
-        <div v-if="tweets" class="post-item-wrapper bg-gray-200 rounded-md mx-2 my-2 pb-4 cursor-pointer"
+        <div v-if="tweets" class="text-center bg-gray-200 rounded-md mx-2 my-2 pb-4 cursor-pointer"
             :class="[twitterBorderColor, defaultTransition]" v-for="tweet in props.tweets" :key="tweet.id"
             @click.native="redirect(tweet)">
             <tweet-item :tweet="tweet" compact />
@@ -29,10 +29,3 @@ function redirect(tweet) {
     navigateTo(`/status/${tweet.id}`)
 }
 </script>
-
-<style>
-.post-item-wrapper {
-    min-height: 200px;
-    text-align: center;
-}
-</style>
