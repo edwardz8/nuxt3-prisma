@@ -1,10 +1,14 @@
 # Nuxt 3 Minimal Starter
 
 ### task list
+
+- add X ( exit ) button to modal. forced to refresh to exit on mobile
+  
 - add likes to posts
+  
 - add registration functionality 
   
-- IMPORTANT: do not show replies on home posts 
+- do not show replies on home posts 
 
 ## Setup (node or nvm version 18)
 

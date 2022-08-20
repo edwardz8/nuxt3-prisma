@@ -3,7 +3,7 @@
 
         <TweetItemActionsIcon color="blue" @on-click="emits('onCommentClick')" :size="size">
             <template v-slot:icon="{ classes }">
-                <ChatIcon :class="classes" />
+               <ChatIcon :class="classes" />
             </template>
 
             <template v-if="showStats" v-slot:default>
