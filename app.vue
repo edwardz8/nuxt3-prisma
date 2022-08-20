@@ -29,7 +29,7 @@ function handleFormSuccess(tweet) {
   closePostTweetModal()
 
   navigateTo({
-    path: `/status/${tweet.id}`
+    path: '/'
   })
 }
 

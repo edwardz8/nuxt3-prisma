@@ -2,10 +2,9 @@
 
 ### task list
 - add likes to posts
-- add logout functionality 
-- do not show replies on home posts 
-
-- registration broken on deploy 
+- add registration functionality 
+  
+- IMPORTANT: do not show replies on home posts 
 
 ## Setup (node or nvm version 18)
 
