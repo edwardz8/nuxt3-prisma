@@ -93,7 +93,7 @@ function handleFormSubmit() {
   });
   text.value = ''
   /* i think this is what i should be doing? */
-  selectedFile.value = null
+  // selectedFile.value = null
   /* alert(JSON.stringify({
     text: text.value 
   })) */
