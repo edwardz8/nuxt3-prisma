@@ -4,7 +4,7 @@
       <div class="flex w-12 items-top">
         <img
           :src="props.user?.profileImage"
-          alt=""
+          alt="faux profile image"
           class="inline-block w-10 h-10 rounded-full"
         />
       </div>
@@ -92,6 +92,8 @@ function handleFormSubmit() {
     mediaFiles: [selectedFile.value],
   });
   text.value = ''
+  /* i think this is what i should be doing? */
+  selectedFile.value = null
   /* alert(JSON.stringify({
     text: text.value 
   })) */

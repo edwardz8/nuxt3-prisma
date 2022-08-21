@@ -1,14 +1,14 @@
 # Nuxt 3 Minimal Starter
 
 ### task list
-
-- add X ( exit ) button to modal. forced to refresh to exit on mobile
   
 - add likes to posts
   
 - add registration functionality 
   
 - do not show replies on home posts 
+
+- image file does not clear on home page when submitted
 
 ## Setup (node or nvm version 18)
 

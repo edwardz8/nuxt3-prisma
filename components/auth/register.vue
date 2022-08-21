@@ -1,13 +1,9 @@
 <template>
   <div class="w-full">
-    <div class="flex justify-center">
-      <!-- <div class="w-10 h-10">
-                <logo-brand />
-            </div> -->
-    </div>
-
     <div class="pt-5 space-y-6">
+      <ui-input v-model="data.name" label="name" placeholder="name" />
       <ui-input v-model="data.username" label="username" placeholder="username" />
+      <ui-input v-model="data.email" label="name" placeholder="email" />
 
       <ui-input
         label="password"
@@ -16,33 +12,39 @@
         v-model="data.password"
       />
 
+      <ui-input
+        label="repeat password"
+        placeholder="********"
+        type="password"
+        v-model="data.repeatPassword"
+      />
+
       <ui-button @click="handleLogin" liquid :disabled="isButtonDisabled">
-        Login
+        Register
       </ui-button>
-
-      <!-- <a class="mt-auto mb-8">
-        <nuxt-link to="/register">
-          <span class="w-8 h-8"> Not registered? Signup. </span>
-        </nuxt-link>
-      </a> -->
-
     </div>
   </div>
 </template>
 
 <script setup>
 const data = reactive({
+  name: "",
   username: "",
+  email: "",
   password: "",
+  repeatPassword: "",
   loading: false,
 });
-async function handleLogin() {
-  const { login } = useAuth();
+async function handleRegistration() {
+  const { register } = useAuth();
   data.loading = true;
   try {
-    await login({
+    await register({
+      name: data.name,
       username: data.username,
+      email: data.email,
       password: data.password,
+      repeatPassword: data.repeatPassword,
     });
   } catch (error) {
     console.log(error);
@@ -51,6 +53,6 @@ async function handleLogin() {
   }
 }
 const isButtonDisabled = computed(() => {
-  return !data.username || !data.password || data.loading;
+  return !data.name || !data.username || !data.email || !data.password || !data.repeatPassword || data.loading;
 });
 </script>

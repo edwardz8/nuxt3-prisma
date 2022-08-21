@@ -1,6 +1,5 @@
 <template>
   <TransitionRoot appear :show="props.isOpen" as="template">
-
     <Dialog as="div" @close="closeModal" class="relative z-10">
       <TransitionChild
         as="template"
@@ -15,7 +14,6 @@
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
-
         <div class="flex items-center justify-center min-h-full p-4 text-center">
           <TransitionChild
             as="template"
@@ -29,14 +27,16 @@
             <DialogPanel
               class="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
             >
+              <div class="mt-4"><button type="button" 
+              class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-3 py-2 text-sm font-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+                  @click="closeModal(false)">X</button></div>
+
               <slot></slot>
             </DialogPanel>
           </TransitionChild>
         </div>
-        
       </div>
     </Dialog>
-
   </TransitionRoot>
 </template>
 

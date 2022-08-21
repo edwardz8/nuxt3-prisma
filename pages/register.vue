@@ -9,9 +9,12 @@
       class="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
     >
       <div class="flex items-center w-full h-full max-w-sm mx-auto lg:w-96">
-        <auth-form />
+        <auth-register />
       </div>
-      <p class="text-md font-medium">I don't have a name for it but it's like Pinterest for bettors and fantasy sports players. Maybe BetBarkers?</p>
     </div>
   </div>
 </template>
+
+<script setup>
+
+</script>

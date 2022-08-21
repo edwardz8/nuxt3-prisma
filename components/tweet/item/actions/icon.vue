@@ -1,13 +1,13 @@
 <template>
   <div
     @click.stop.prevent="emits('onClick')"
-    class="flex items-center text-gray-800 cursor-pointer group mt-4 bg-gray-100 rounded-md px-6"
+    class="flex items-center text-gray-800 cursor-pointer group mt-4 bg-gray-100 rounded-md px-6 hover:bg-gray-200"
   >
-    <div :class="`p-2 rounded-full bg-${props.color}-800 group-hover:text-${props.color}-400 ${defaultTransition}`">
+    <div :class="`p-2 rounded-full bg-${props.color}-800 group-hover:text-${props.color}-600 ${defaultTransition}`">
         <slot name="icon" :classes="`w-${props.size} h-${props.size}`" />
     </div>
 
-    <span :class="`ml-1 group-hover:text-${props.color}-400`">
+    <span :class="`ml-1 group-hover:text-${props.color}-200`">
       Add Comment 
     </span>
 

@@ -55,7 +55,8 @@ async function handleFormSubmit(data) {
     console.log(error);
   } finally {
     loading.value = false;
-    response = null
+    data.text = ''
+    data.mediaFiles = ''
   }
 }
 </script>
