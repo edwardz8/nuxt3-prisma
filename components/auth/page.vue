@@ -1,7 +1,8 @@
 <template>
   <div class="flex h-screen">
     <div class="relative flex-1 w-0 lg:block">
-      <img class="absolute inset-0 object-cover w-full h-full"
+      <img
+        class="absolute inset-0 object-cover w-full h-full"
         src="https://images.unsplash.com/photo-1516226415502-d6624544376b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1439&q=80"
       />
     </div>
@@ -9,9 +10,28 @@
       class="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
     >
       <div class="flex items-center w-full h-full max-w-sm mx-auto lg:w-96">
-        <auth-form />
+        <auth-form v-if="login" />
+        <auth-register v-else />
       </div>
-      <p class="text-md font-medium">I don't have a name for it but it's like Pinterest for bettors and fantasy sports players. Maybe BetBarkers?</p>
+
+      <div class="flex justify-center items-start mt-4 w-full max-w-sm mx-auto lg:w-96">
+        <ui-button type="button" @click="changeForm">{{
+          login ? "Register" : "Login"
+        }}</ui-button>
+      </div>
+
+      <p class="text-md font-medium">
+        I don't have a name for it but it's like Pinterest for bettors and fantasy sports
+        players. Maybe BetBarkers?
+      </p>
     </div>
   </div>
 </template>
+
+<script setup>
+const login = ref(true);
+
+function changeForm() {
+  login.value = !login.value;
+}
+</script>

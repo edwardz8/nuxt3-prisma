@@ -19,7 +19,7 @@
         v-model="data.repeatPassword"
       />
 
-      <ui-button @click="handleLogin" liquid :disabled="isButtonDisabled">
+      <ui-button @click="handleRegistration" liquid :disabled="isButtonDisabled">
         Register
       </ui-button>
     </div>
@@ -35,6 +35,7 @@ const data = reactive({
   repeatPassword: "",
   loading: false,
 });
+
 async function handleRegistration() {
   const { register } = useAuth();
   data.loading = true;
@@ -52,6 +53,7 @@ async function handleRegistration() {
     data.loading = false;
   }
 }
+
 const isButtonDisabled = computed(() => {
   return !data.name || !data.username || !data.email || !data.password || !data.repeatPassword || data.loading;
 });

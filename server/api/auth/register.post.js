@@ -1,5 +1,7 @@
 import { sendError } from 'h3'
+import { generateTokens, sendRefreshToken } from "../../utils/jwt.js"
 import { userTransformer } from '~~/server/transformers/user'
+import { createRefreshToken } from "~~/server/db/refreshTokens"
 import { createUser } from '../../db/users'
 
 export default defineEventHandler(async (event) => {
@@ -31,7 +33,15 @@ export default defineEventHandler(async (event) => {
 
     const user = await createUser(userData)
 
+    const { accessToken, refreshToken } = generateTokens(user)
+    await createRefreshToken({
+        token: refreshToken,
+        userId: user.id 
+    })
+
+    sendRefreshToken(event, refreshToken)
+
     return {
-        body: userTransformer(user)
+        access_token: accessToken, user: userTransformer(user)
     }
 })

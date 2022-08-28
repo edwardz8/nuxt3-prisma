@@ -31,7 +31,8 @@ function getTweetIdFromRoute() {
 async function getTweet() {
     loading.value = true
     try {
-        let tweetId = getTweetIdFromRoute()
+        // let tweetId = getTweetIdFromRoute()
+        let tweetId = useRoute().params.id 
         if (tweetId) {
             const response = await getTweetById(tweetId)
             tweet.value = response.tweet 
@@ -43,7 +44,7 @@ async function getTweet() {
     }
 }
 
-onBeforeMount(() => {
-    getTweet()
+onMounted(async () => {
+    await getTweet()
 })
 </script>

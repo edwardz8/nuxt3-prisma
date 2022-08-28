@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <nuxt-link :to="'/status/'+props.tweet.id">
         <tweet-item-header :tweet="props.tweet" />
 
         <div :class="tweetBodyWrapper">
@@ -17,7 +17,7 @@
                     @on-comment-click="handleCommentClick" />
             </div>
         </div>
-    </div>
+    </nuxt-link>
 </template>
 <script setup>
 const { twitterBorderColor } = useTailwindConfig()
