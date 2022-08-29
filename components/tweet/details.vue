@@ -10,7 +10,6 @@
 </template>
 
 <script setup>
-
 const emits = defineEmits(["populateReply"])
 
 const props = defineProps({

@@ -12,10 +12,10 @@
                 <img :src="image.url" class="w-full max-w-sm rounded-2xl" />
             </div>
 
-            <div class="mt-2" v-if="!props.hideActions">
+            <!-- <div class="mt-2" v-if="!props.hideActions">
                 <tweet-item-actions :tweet="props.tweet" :compact="props.compact"
                     @on-comment-click="handleCommentClick" />
-            </div>
+            </div> -->
         </div>
     </nuxt-link>
 </template>

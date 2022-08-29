@@ -33,7 +33,6 @@
         ref="imageInput"
         hidden
         accept="image/png, image/gif, image/jpeg"
-
         @change="handleImageChange"
       />
     </div>
@@ -91,7 +90,7 @@ function handleFormSubmit() {
     text: text.value,
     mediaFiles: [selectedFile.value],
   });
-  selectedFile.value = null
+  // selectedFile.value = null
   /* alert(JSON.stringify({
     text: text.value 
   })) */

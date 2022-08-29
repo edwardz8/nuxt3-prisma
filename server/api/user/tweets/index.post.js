@@ -47,9 +47,8 @@ export default defineEventHandler(async (event) => {
   })
 
   const file_res = await Promise.all(filePromises)
-
   tweet.mediaFiles = []
-
+  
   file_res.forEach((file) => {
     tweet.mediaFiles.push({ id: file.id, url: file.url })
   })
