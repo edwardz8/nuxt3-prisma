@@ -40,7 +40,7 @@ const props = defineProps({
     }
 })
 
-const tweetBodyWrapper = computed(() => props.compact ? 'ml-8' : 'ml-2 mt-6')
+const tweetBodyWrapper = computed(() => props.compact ? 'ml-2' : 'ml-2 mt-6')
 
 const textSize = computed(() => props.compact ? 'text-base' : 'text-2xl')
 
