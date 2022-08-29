@@ -1,11 +1,11 @@
 <template>
-    <div class="columns-1 sm:columns-3 md:columns-3 lg:columns-4 xl:columns-5">
+    <div class="columns-1 sm:columns-3 md:columns-3 lg:columns-4 xl:columns-5 ml-2 mr-2">
         <!-- <div v-if="isEmptyArray" class="p-4">
             <p class="text-center text-gray-500">
                 No posts
             </p>
         </div> -->
-        <div class="text-center bg-gray-200 rounded-md my-2 pb-4 cursor-pointer"
+        <div class="text-center bg-gray-200 rounded-md my-2 pb-4 cursor-pointer overflow-hidden"
             :class="[twitterBorderColor, defaultTransition]" v-for="tweet in props.tweets" :key="tweet.id"
             @click.native="redirect(tweet)">
 
