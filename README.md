@@ -3,10 +3,6 @@
 ### task list
   
 - add likes to posts
-  
-- do not show replies on home posts 
-
-- image file does not clear on home page when submitted
 
 ## Setup (node or nvm version 18)
 

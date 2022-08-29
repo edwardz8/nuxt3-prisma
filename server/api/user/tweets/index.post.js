@@ -1,75 +1,70 @@
-import formidable from "formidable"
-import { tweetTransformer } from "~~/server/transformers/tweet.js"
-import { createTweet } from "../../../db/tweets.js"
-import { createMediaFile } from "../../../db/mediaFiles.js"
-import { uploadToCloudinary } from "../../../utils/cloudinary.js"
+import formidable from 'formidable'
+import { tweetTransformer } from '~~/server/transformers/tweet.js'
+import { createTweet } from '../../../db/tweets.js'
+import { createMediaFile } from '../../../db/mediaFiles.js'
+import { uploadToCloudinary } from '../../../utils/cloudinary.js'
 
 export default defineEventHandler(async (event) => {
-    const form = formidable({})
+  const form = formidable({})
 
-    const response = await new Promise((resolve, reject) => {
-        form.parse(event.req, (err, fields, files) => {
-            if (err) {
-                reject(err)
-            }
-            resolve({fields, files})
-        })
+  const response = await new Promise((resolve, reject) => {
+    form.parse(event.req, (err, fields, files) => {
+      if (err) {
+        reject(err)
+      }
+      resolve({ fields, files })
     })
+  })
 
-    const { fields, files } = response 
+  const { fields, files } = response
 
-    const userId = event.context?.auth?.user?.id 
+  const userId = event.context?.auth?.user?.id
 
-    const tweetData = {
-        text: fields.text,
-        authorId: userId
-    }
+  const tweetData = {
+    text: fields.text,
+    authorId: userId,
+  }
 
-    const replyTo = fields.replyTo
+  const replyTo = fields.replyTo
 
-    if (replyTo && replyTo !== 'null' && replyTo !== 'undefined') {
-        tweetData.replyToId = replyTo
-    }
+  if (replyTo && replyTo !== 'null' && replyTo !== 'undefined') {
+    tweetData.replyToId = replyTo
+  }
 
-    const tweet = await createTweet(tweetData)
+  const tweet = await createTweet(tweetData)
 
-    const filePromises = Object.keys(files).map(async key => {
-        const file = files[key]
+  const filePromises = Object.keys(files).map(async (key) => {
+    const file = files[key]
 
-        const cloudinaryResource = await uploadToCloudinary(file.filepath)
-        console.log(cloudinaryResource)
+    const cloudinaryResource = await uploadToCloudinary(file.filepath)
 
-        return createMediaFile({
-            url: cloudinaryResource.secure_url,
-            providerPublicId: cloudinaryResource.public_id,
-            userId: userId,
-            tweetId: tweet.id
-        })
+    return createMediaFile({
+      url: cloudinaryResource.secure_url,
+      providerPublicId: cloudinaryResource.public_id,
+      userId: userId,
+      tweetId: tweet.id,
     })
+  })
 
-    // before revisions
-    // await Promise.all(filePromises)
+  const file_res = await Promise.all(filePromises)
 
-    const file_res = await Promise.all(filePromises)
-    tweet.mediaFiles = []
+  tweet.mediaFiles = []
 
-    file_res.forEach((file) => {
-        tweet.mediaFiles.push({ id: file.id, url: file.url })
-    })
+  file_res.forEach((file) => {
+    tweet.mediaFiles.push({ id: file.id, url: file.url })
+  })
 
-    if (userId) {
-        tweet.author = {
-            email: event.context.auth.user.email,
-            handle: '@' + event.context.auth.user.username,
-            id: event.context.auth.user.id,
-            profileImage: event.context.auth.user.profileImage,
-            username: event.context.auth.user.username,
-        }
+  if (userId)
+    tweet.authorId = {
+      email: event.context.auth.user.email,
+      handle: '@' + event.context.auth.user.username,
+      id: event.context.auth.user.id,
+      profileImage: event.context.auth.user.profileImage,
+      username: event.context.auth.user.username,
     }
-
-    return {
-        tweet: tweetTransformer(tweet) 
-        // hello: response
-        // files 
-    }
+  return {
+    tweet: tweetTransformer(tweet),
+    // hello: response
+    // files
+  }
 })
