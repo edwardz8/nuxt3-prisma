@@ -91,8 +91,6 @@ function handleFormSubmit() {
     text: text.value,
     mediaFiles: [selectedFile.value],
   });
-  text.value = ''
-  /* i think this is what i should be doing? */
   selectedFile.value = null
   /* alert(JSON.stringify({
     text: text.value 
@@ -116,4 +114,14 @@ function handleImageChange(event) {
 
   reader.readAsDataURL(file);
 }
+
+function flushInputs() {
+  text.value = ''
+  inputImageUrl.value = ''
+}
+
+defineExpose({
+  flushInputs
+})
+
 </script>

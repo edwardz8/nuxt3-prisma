@@ -11,6 +11,8 @@
 
 <script setup>
 
+const emits = defineEmits(["populateReply"])
+
 const props = defineProps({
     tweet: {
         type: Object,
@@ -25,6 +27,8 @@ const props = defineProps({
 const replies = computed(() => props.tweet?.replies || [])
 
 function handleFormSuccess(tweet) {
+    emits("populateReply", tweet)
+
     navigateTo({
         path: `/status/${tweet.id}`
     })

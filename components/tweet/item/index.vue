@@ -19,6 +19,7 @@
         </div>
     </nuxt-link>
 </template>
+
 <script setup>
 const { twitterBorderColor } = useTailwindConfig()
 

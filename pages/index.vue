@@ -42,6 +42,7 @@ onBeforeMount(async () => {
 });
 
 function handleFormSuccess(tweet) {
+  homeTweets.value.unshift({...tweet})
   navigateTo({
     path: '/',
   });

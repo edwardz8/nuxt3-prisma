@@ -4,7 +4,7 @@ import { tweetTransformer } from "~~/server/transformers/tweet"
 export default defineEventHandler(async (event) => {
     const { query } = useQuery(event)
 
-    let primsaQuery = {
+    let prismaQuery = {
         include: {
             author: true,
             mediaFiles: true,
@@ -27,17 +27,24 @@ export default defineEventHandler(async (event) => {
     }
 
     if (!!query) {
-        primsaQuery = {
-            ...primsaQuery,
+        prismaQuery = {
+            ...prismaQuery,
             where: {
                 text: {
                     contains: query
                 }
             }
         }
+    } else {
+        prismaQuery = {
+            ...prismaQuery,
+            where: {
+                replyTo: null 
+            }
+        }
     }
 
-    const tweets = await getTweets(primsaQuery)
+    const tweets = await getTweets(prismaQuery)
 
     return {
         tweets: tweets.map(tweetTransformer)

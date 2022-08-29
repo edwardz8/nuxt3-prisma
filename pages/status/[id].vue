@@ -1,50 +1,72 @@
 <template>
-    <div>
-        <MainSection title="post" :loading="loading">
+  <div>
+    <MainSection title="post" :loading="loading">
+      <head>
+        <Title>Post</Title>
+      </head>
 
-            <head>
-                <Title>Post</Title>
-            </head>
-
-            <div v-if="tweet">
-            <tweet-details :user="user" :tweet="tweet" />
-            </div>
-
-        </MainSection>
-    </div>
+      <div v-if="tweet">
+        <tweet-details :user="user" :tweet="tweet" @populate-reply="populateReply" />
+      </div>
+    </MainSection>
+  </div>
 </template>
 
-<script setup>
-const loading = ref(false)
+<script>
+import { defineComponent } from "vue";
 
-const tweet = ref(null)
-const { getTweetById } = useTweets()
+export default defineComponent({
+  setup() {
+    const loading = ref(false);
 
-const { useAuthUser } = useAuth()
-const user = useAuthUser()
+    const tweet = ref(null);
+    const { getTweetById } = useTweets();
 
-watch(() => useRoute().fullPath, () => getTweet())
-function getTweetIdFromRoute() {
-    return useRoute().params.id
-}
+    const { useAuthUser } = useAuth();
+    const user = useAuthUser();
 
-async function getTweet() {
-    loading.value = true
-    try {
-        // let tweetId = getTweetIdFromRoute()
-        let tweetId = useRoute().params.id 
+    /* watch(() => useRoute().fullPath, () => getTweet())
+        function getTweetIdFromRoute() {
+            return useRoute().params.id
+        } */
+
+    async function getTweet(tweetId) {
+      loading.value = true;
+      try {
         if (tweetId) {
-            const response = await getTweetById(tweetId)
-            tweet.value = response.tweet 
+          const response = await getTweetById(tweetId);
+          tweet.value = response.tweet;
         }
-    } catch (error) {
+        // let tweetId = getTweetIdFromRoute()
+        // let tweetId = useRoute().params.id
+      } catch (error) {
         console.log(error);
-    } finally {
-        loading.value = false
+      } finally {
+        loading.value = false;
+      }
     }
-}
 
-onMounted(async () => {
-    await getTweet()
-})
+    function populateReply(reply) {
+      tweet.value.replies.unshift({ ...reply });
+    }
+
+    onBeforeMount(async () => {
+      await getTweet(useRoute().params.id);
+    });
+
+    return {
+      loading,
+      tweet,
+      user,
+      getTweet,
+      populateReply,
+    };
+  },
+
+  async beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.getTweet(to.params.id);
+    });
+  },
+});
 </script>

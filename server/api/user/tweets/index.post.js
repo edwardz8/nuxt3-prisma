@@ -5,7 +5,6 @@ import { createMediaFile } from "../../../db/mediaFiles.js"
 import { uploadToCloudinary } from "../../../utils/cloudinary.js"
 
 export default defineEventHandler(async (event) => {
-
     const form = formidable({})
 
     const response = await new Promise((resolve, reject) => {
@@ -48,7 +47,25 @@ export default defineEventHandler(async (event) => {
         })
     })
 
-    await Promise.all(filePromises)
+    // before revisions
+    // await Promise.all(filePromises)
+
+    const file_res = await Promise.all(filePromises)
+    tweet.mediaFiles = []
+
+    file_res.forEach((file) => {
+        tweet.mediaFiles.push({ id: file.id, url: file.url })
+    })
+
+    if (userId) {
+        tweet.author = {
+            email: event.context.auth.user.email,
+            handle: '@' + event.context.auth.user.username,
+            id: event.context.auth.user.id,
+            profileImage: event.context.auth.user.profileImage,
+            username: event.context.auth.user.username,
+        }
+    }
 
     return {
         tweet: tweetTransformer(tweet) 

@@ -10,6 +10,7 @@
       :user="props.user"
       placeholder="Add an image or gif and share your bet."
       @onSubmit="handleFormSubmit"
+      ref="formInput"
     />
     </div>
 
@@ -20,6 +21,8 @@
 const emits = defineEmits(["onSuccess"]);
 
 const loading = ref(false);
+
+const formInput = ref()
 
 const { postTweet } = useTweets();
 
@@ -55,6 +58,7 @@ async function handleFormSubmit(data) {
     console.log(error);
   } finally {
     loading.value = false;
+    formInput.value.flushInputs()
   }
 }
 </script>
