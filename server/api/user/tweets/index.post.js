@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (userId)
-    tweet.authorId = {
+    tweet.author = {
       email: event.context.auth.user.email,
       handle: '@' + event.context.auth.user.username,
       id: event.context.auth.user.id,

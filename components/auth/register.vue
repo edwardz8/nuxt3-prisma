@@ -3,7 +3,7 @@
     <div class="pt-5 space-y-6">
       <ui-input v-model="data.name" label="name" placeholder="name" />
       <ui-input v-model="data.username" label="username" placeholder="username" />
-      <ui-input v-model="data.email" label="name" placeholder="email" />
+      <ui-input v-model="data.email" label="email" placeholder="email" />
 
       <ui-input
         label="password"

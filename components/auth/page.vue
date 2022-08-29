@@ -22,7 +22,7 @@
 
       <p class="text-md font-medium">
         I don't have a name for it but it's like Pinterest for bettors and fantasy sports
-        players. Maybe BetBarkers?
+        players.
       </p>
     </div>
   </div>
