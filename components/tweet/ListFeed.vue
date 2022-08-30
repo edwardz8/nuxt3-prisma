@@ -27,8 +27,4 @@ const props = defineProps({
 });
 
 const isEmptyArray = computed(() => props.tweets.length === 0);
-
-/* function redirect(tweet) {
-    navigateTo(`/status/${tweet.id}`)
-} */
 </script>
